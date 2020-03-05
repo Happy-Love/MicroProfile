@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  #before_filter :authenticate_user!, except => [:show, :index]
-  
+  before_action :owner?, only: %i[edit destroy]
   def index
     @users = User.all
   end
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
   # end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   #def create
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
   #end
 
   def update
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user
     else
@@ -46,4 +45,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password)
   end
+
+  
+  def owner?
+    unless current_user == @user
+      redirect_back fallback_location: root_path, notice: 'User is not owner'
+    end
+  end
+  
+  
 end

@@ -17,7 +17,13 @@
       <td><%= link_to 'Show', user_path(user) %> 
       <%= link_to 'Destroy', user_path(user),
         method: :delete,
-        data: { confirm: 'Are you sure?' } %> </td>
+        data: { confirm: 'Are you sure?' } %>
+      
+      <% if owner?(user)  %>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <% end %>
+        
+      </td>
     </tr>
   <% end %>
 </table>  
