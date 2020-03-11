@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
   
   def owner?
-    unless current_user == @user
+    unless current_user == User.find(params[:id])
       redirect_back fallback_location: root_path, notice: 'User is not owner'
     end
   end
