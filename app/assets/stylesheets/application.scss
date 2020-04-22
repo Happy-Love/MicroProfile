@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
  */
- @import "bootstrap";
  
  @import "users";
  @import "posts";
