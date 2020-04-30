@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy    
     @user = User.find(current_user.id)
     @user.destroy
     redirect_to users_path
@@ -49,9 +49,10 @@ class UsersController < ApplicationController
 
   
   def owner?
-    unless current_user == User.find(params[:id])
+    unless current_user == User.find(params[:id]) || !current_user.nil?  
       redirect_back fallback_location: root_path, notice: 'User is not owner'
     end
+
   end
   
   
