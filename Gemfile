@@ -5,10 +5,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
  
-# Fonts ico
-gem 'font-awesome-rails'
+
+
 gem 'devise'
 gem 'dotenv-rails'
+# Fonts ico
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'puma', '~> 4.1'
