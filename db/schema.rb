@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(version: 2020_04_21_205910) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "following_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
-    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
-    t.index ["following_id"], name: "index_follows_on_following_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "description"
     t.integer "user_id"

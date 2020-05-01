@@ -6,7 +6,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     ports:
-      - 5435:5432
+      - 5436:5432
     environment: 
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -18,5 +18,11 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
+    environment:
+      EMAIL_PASSWORD: "Uruu2013+2013"
+      EMAIL_LOGIN: "happylove.programmer"
+      AWS_ACCESS_KEY_ID: AKIAVAZLZLNCCS6NFCHV
+      AWS_SECRET_ACCESS_KEY: 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
+      AWS_BUCKET: railsas
     depends_on:
       - db
