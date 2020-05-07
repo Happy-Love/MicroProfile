@@ -10,8 +10,6 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 COPY package.json . 
 COPY yarn.lock .
 RUN bundle check || bundle install
-RUN yarn install --check-files
-RUN rake webpacker:install
 COPY . /myapp
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
