@@ -1,4 +1,5 @@
 <div class="post-show row">
+  
   <div class="col-md-8">
     <%=image_tag @post.image, class: 'image' %>
   </div>
@@ -8,7 +9,7 @@
     </div>
     <div class="delete">
     <% if current_user.posts.exists?(@post.id) %>
-    <%= link_to 'Remove', post_path(@post), method: :delete, 
+    <%= link_to 'Remove', [@post.user, @post], method: :delete, 
     data: { confirm: 'Are you sure?' } %>
     <% end %>
     </div>
