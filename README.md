@@ -23,3 +23,8 @@ Things you may want to cover:
 
 * ...
 # MicroProfile
+  -> branch lab3
+  -> docker-compose -f docker-compose-2.yml up
+  -> docker-compose -f docker-compose-2.yml run web rake db:create db:migrate
+  Afther this steps will compiling pages (waiting 20-30 seconds) at first time.
+  It's all
