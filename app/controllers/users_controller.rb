@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :owner?, only: %i[edit destroy]
   def index
     @users = User.all
   end
@@ -47,6 +48,12 @@ class UsersController < ApplicationController
   end
 
   
+  def owner?
+    unless current_user.id == User.find(params[:id]) || !current_user.nil?  
+      redirect_back fallback_location: root_path, notice: 'User is not owner'
+    end
+
+  end
   
   
 end
