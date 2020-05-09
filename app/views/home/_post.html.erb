@@ -7,7 +7,11 @@
         <% end %>
       <% end %>
     </div>
-    <%= link_to post.user.firstname, user_path(post.user), class: 'username' %>
+    
+    <a href="<%=user_path(post.user)%>"  class="username"> <%= post.user.firstname %></a>
+    <a href="<%=user_post_path(post.user.id, post.id)%>" style=" margin-left:auto; margin-right:20px;  " class="username"> <%= post.comments.count %> Comments</a>
+    
+    
   </div>
   <%= image_tag post.image, class: 'main-image' %>
   <div class="description">

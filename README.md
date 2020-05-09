@@ -22,13 +22,19 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# MicroProfile
--> branch lab3
 
--> docker-compose -f docker-compose-2.yml up
 
--> docker-compose -f docker-compose-2.yml run web rake db:create db:migrate
+## MicroProfile
 
-Afther this steps will compiling pages (waiting 20-30 seconds) at first time.
+* branch master,lab3,lab4,lab5
+* docker-compose -f docker-compose-2.yml up
+* docker-compose -f docker-compose-2.yml run web rake db:create db:migrate
+* Afther this steps will compiling pages (waiting 20-30 seconds) at first time.
+* It's all
 
-It's all
+### Помощь при создании поста или коммента
+* На localhost:3000 вы можете создать пост
+* После создания первого поста, можно перейти к нему users/1/posts/1
+* Там же можно создать комменты
+* Количество комментариев можно увидеть на localhost:3000 так же по картинке можно перейти на пост и его комментарии   
+ 
