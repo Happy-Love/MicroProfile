@@ -13,7 +13,9 @@
     
     
   </div>
+  <%= link_to user_post_path(post.user.id,post.id) do %>
   <%= image_tag post.image, class: 'main-image' %>
+  <% end %>
   <div class="description">
     <%= render partial: "posts/description", locals: {post: post} %>
   </div>

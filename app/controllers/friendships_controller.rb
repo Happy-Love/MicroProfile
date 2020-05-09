@@ -15,6 +15,10 @@ class FriendshipsController < ApplicationController
 
   def find_user
     @user=User.find(params[:user_id])  
+    if @user==current_user
+      flash[:error]="Нельзя подписаться на самого себя"
+      redirect_to user_path(@user.id)
+    end  
   end
   
 
