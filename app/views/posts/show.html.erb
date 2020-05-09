@@ -12,6 +12,18 @@
     <%= link_to 'Remove', [@post.user, @post], method: :delete, 
     data: { confirm: 'Are you sure?' } %>
     <% end %>
+    <hr>
+    <%= form_with(model: [@user,@post,@post.comments.build ], local: true) do |form| %>
+    <p>
+    <%= form.label :content %><br>
+    <%= form.text_field :content %>
+    </p>
+    <%= form.submit %>
+    <%end%>
+    <%@comments.each do |comment|%>
+      <p><strong><%=comment.user.firstname%></strong></p>   
+      <p><%=comment.content%></p>
+    <% end %>
     </div>
   </div>
  </div> 

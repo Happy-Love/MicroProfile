@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+    end
+    resources :posts do
+      resources :comments
     end  
-    resources :posts
   end
   resources :friendships, only: %i[create destroy]
   get 'users' => 'users#index', as: 'user_root'

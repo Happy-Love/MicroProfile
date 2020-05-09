@@ -10,7 +10,7 @@ class User < ApplicationRecord
   
   # Posts
   has_many :posts, dependent: :destroy
-  
+  has_many :comments, dependent: :destroy  
   # Follower's 
   has_many :active_friendships, class_name: 'Friendship', foreign_key: 'follower_id',
     dependent: :destroy

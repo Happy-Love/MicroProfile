@@ -12,8 +12,8 @@ class PostsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    
     @post = @user.posts.find(params[:id])
+    @comments = Comment.where(post_id: @post).order("created_at DESC")
   end
 
   def destroy
