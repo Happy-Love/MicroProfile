@@ -61,9 +61,15 @@
       </div>
     <% end %>
   </div>
- <h3>Followers</h3>
- <% @user.followers.count do |followers|%>
-   
+ 
+ <% if  @user.followers.count != 0%>
+  <h3>Followers</h3> 
+ <% else %>
+  <h3>Followers on the way!</h3> 
+ <% end %>
+ 
+ 
+<% @user.followers.count do |followers|%>
 <div class="user-images">
       <div class="wrapper" >
         <%=link_to user_path(followers.id) do %>
