@@ -18,10 +18,16 @@
       </div>
       <ul class="posts">
         <li><span><%= @posts.count %></span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
+        <li><span><%= @user.followers.count%></span> followers</li>
+        <li><span><%= @user.following.count%></span> following</li>
       </ul>
       <h2 class="name"><%=@user.firstname %></h2>
+      <% if current_user.following?(@user) %>
+  <%= link_to 'Unfollow', friendship_path(user_id: @user.id), method: :delete, :class => "btn btn-primary" %>
+<% else %>
+  <%= link_to 'Follow', friendships_path(user_id: @user.id), method: :post, :class => "btn btn-primary" %>
+<% end %>
+
       <%# <%=link_to @user.website, @user.website, class: 'website' %>
     </div>
   </div>
@@ -31,7 +37,7 @@
       <i class="fa fa-th"></i>
       POSTS
     </a>
-    <a class="tab" href="">
+    <a class="tab" data-toggle="tab" href="">
       <i class="fa fa-tv"></i>
       IGTV
     </a>
@@ -45,6 +51,7 @@
     </a>
   </div>
 
+
   <div class="user-images">
     <% @posts.each do |post|%>
       <div class="wrapper">
@@ -54,7 +61,22 @@
       </div>
     <% end %>
   </div>
+ <h3>Followers</h3>
+ <% @user.followers.count do |followers|%>
+   
+<div class="user-images">
+      <div class="wrapper" >
+        <%=link_to user_path(followers.id) do %>
+          <%=image_tag followers.avatar %>
+        <% end %>
+      </div>
+  </div>
+<% end %>
 
 <%= link_to 'Back', users_path, :class => "btn btn-primary" %>
+  
+  
+    
+      
 
 </div>
