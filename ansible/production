@@ -1,0 +1,4 @@
+rails ansible_host=ec2-54-163-0-27.compute-1.amazonaws.com ansible_user=ubuntu
+[all:vars]
+user=deploy
+user_password=784512qwe

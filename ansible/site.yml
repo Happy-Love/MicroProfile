@@ -1,0 +1,62 @@
+- hosts: rails
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest    
+    - name: Add deploy user
+      user: 
+          name: deploy
+          shell: /bin/bash
+    - name: Add SSH key to server for deploy user
+      authorized_key:
+        user: deploy
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDM+MswWKqWnep0h3TDSQgGTLIBEZPXYsbW5iW79AIL9/FjxmyGO/iU+WwIC4+gAzdDD15EPGv3ONx0KLCjUYDMpYvigO62mJbOP134jILNx3e76WczetYPHLGNoBM12rDzeHsZzxoiFdUYCN/hA6V5INLWtDGU+/xdcSGkY2Z54p5SivHcfQ1lhkYmmvwoW/t6crB5M9XVod2b2WPbgR1LQAgjuJtRFn83AJ3B2tnX9z3O1wDHrG1xpITvh0IeVy25bUaaT8XPtB+JKMNx2lrmcMkOA3IpBfP+xzLCZMxYbkA/t1m8900HNJmz0Ce18+zx2CxjGhkMEkBMNGtihdNZ pc-mount@pcmount-Aspire-V5-531G"
+    - name: Download github.com/Happy-Love/Blog-master
+      git: 
+        # user: deploy
+        repo: "https://github.com/Happy-Love/Blog.git"
+        dest: Blog
+        accept_hostkey: yes
+        force: true
+    - name: bundle install
+      become: true  
+      become_user: ubuntu
+      command: bash -lc "bundle install"
+      args:
+        chdir: "/home/ubuntu/Blog"   
+    - name: access for a normal yarn installation
+      become: true
+      become_user: ubuntu
+      command: bash -lc "sudo chmod -R 777 ."
+      args:
+        chdir: "/home/ubuntu/Blog"  
+    - name: yarn install --check-files
+      become: true  
+      become_user: ubuntu
+      command: bash -lc "yarn install --check-files"
+      args:
+        chdir: "/home/ubuntu/Blog"
+    - name: Puma Stop
+      become: true  
+      become_user: ubuntu
+      command: bash -lc "bundle exec pumactl -F config/puma.rb stop"
+      args:
+        chdir: "/home/ubuntu/Blog"
+      ignore_errors: true      
+
+    - name: rails s
+      become: true  
+      become_user: ubuntu
+      command: bash -lc "rails s -p 3003 -b 0.0.0.0"
+      args:
+        chdir: "/home/ubuntu/Blog"
+      
+        
+        

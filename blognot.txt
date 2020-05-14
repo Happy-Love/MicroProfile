@@ -1,0 +1,5 @@
+1.Configure Security Group
+Security group name: trpo-3-matsulko
+ssh:anywhere
+2. AMI()
+Key pair name: trpo-3-keypair
