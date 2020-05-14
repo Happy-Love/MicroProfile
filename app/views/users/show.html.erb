@@ -65,14 +65,14 @@
     <% end %>
   </div>
  
- <% if  @user.followers.count != 0%>
-  <h3>Followers</h3> 
+ <% if  @user.following.count != 0%>
+  <h3>Followings: </h3> 
  <% else %>
-  <h3>Followers on the way!</h3> 
+  <h3>Followings on the way!</h3> 
  <% end %>
  
  <div class='homepage'>
-<% @user.followers.count do |follower|%>
+<% @user.following.count do |follower|%>
   <br>
   <div class="posts">
   <% follower.posts.count do |fp| %>
