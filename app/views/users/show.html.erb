@@ -71,17 +71,18 @@
   <h3>Followers on the way!</h3> 
  <% end %>
  
- 
-<% @user.followers.count do |followers|%>
-<div class="user-images">
-      <div class="wrapper" >
-        <%=link_to user_path(followers.id) do %>
-          <%=image_tag followers.avatar %>
-        <% end %>
-      </div>
+ <div class='homepage'>
+<% @user.followers.count do |follower|%>
+  <br>
+  <div class="posts">
+  <% follower.posts.count do |fp| %>
+      <%= render partial: 'home/post', locals: { post: fp } %>
+  <%end%>
   </div>
-<% end %>
+     
 
+<% end %>
+</div>
 <%= link_to 'Back', users_path, :class => "btn btn-primary" %>
   
   
