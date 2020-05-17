@@ -5,8 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
  
-
-
+gem 'aws-sdk-s3', '~> 1'
 gem 'devise'
 gem 'dotenv-rails'
 # Fonts ico

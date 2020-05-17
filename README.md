@@ -16,10 +16,11 @@ Things you may want to cover:
 ## MicroProfile
 Запускайте через ветку мастер и следуйте инструкциям
 * branch master
+* Сконфигурируйте web.env.
 * docker-compose -f docker-compose-2.yml up
 * docker-compose -f docker-compose-2.yml run web rake db:create db:migrate
-* Afther this steps will compiling pages (waiting 20-30 seconds) at first time.
-* It's all
+* После этих шагов будет скомпилирована страница localhost:3000 (20-30 секунд, webpacker [Compiling...])
+* Это всё
 
 ### Помощь при создании поста или коммента
 * На localhost:3000 вы можете создать пост

@@ -21,14 +21,7 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
-    environment:
-      EMAIL_PASSWORD: "Uruu2013+2013"
-      EMAIL_LOGIN: "happylove.programmer"
-      AWS_ACCESS_KEY_ID: AKIAVAZLZLNCCS6NFCHV
-      AWS_SECRET_ACCESS_KEY: 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
-      AWS_BUCKET: railsas
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST: db  
+    env_file:
+      - web.env  
     depends_on:
       - db
