@@ -9,6 +9,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 COPY package.json . 
 COPY yarn.lock .
+RUN gem install bundler:2.1.4
 RUN bundle check || bundle install
 COPY . /myapp
 # Add a script to be executed every time the container starts.
